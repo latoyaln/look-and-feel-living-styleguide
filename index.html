@@ -4,56 +4,296 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>[Projectnaam] living styleguide</title>
+    <title>Buurt initiatieven living styleguide</title>
     <link rel="stylesheet" href="style.css" />
+    <link href='https://fonts.googleapis.com/css?family=Space Grotesk' rel='stylesheet'>
   </head>
   <body>
-    <header>
-      <h1>[Projectnaam] styleguide v0.1</h1>
-    </header>
-
-    <nav>
-      <ul>
-        <li><a href="/" class="active">Globals</a></li>
-        <li><a href="/">...</a></li>
-      </ul>
-    </nav>
-
     <main>
-      <h2>Globals</h2>
-
-      <section>
-        <h3>Header</h3>
-        <img src="screenshot_van_je_header.png" alt="screenshot van je header" />
-
-        <h4>Wel doen</h4>
-        <p>Vertel hoe dingen toegepast moeten worden.</p>
-
-        <h4>Niet doen</h4>
-        <p>Vertel hoe dingen vooral niet toegepast moeten worden.</p>
-
-        <!-- Om HTML in HTML te laten zien gebruik je &lt; voor de < en &gt; voor de > -->
-        <pre><code>&lt;header&gt;
-  &lt;h1&gt;Zo maak je een header&lt;/h1&gt;
-&lt;/header&gt;
-
-header {
-  background-color: white;
-  margin-bottom: 1rem;
-  color: silver;
-}
-
-header > h1 {
-  font-size: 1rem;
-  text-align: right;
-}
-  </code></pre>
+      
+      <section class="sidebar">
+        <ul>
+          <li><a href="#intro">Styleguide</a></li>
+          <li><a href="#colors">Colors</a></li>
+          <li><a href="#typography">Typography</a></li>
+          <li><a href="#buttons">Buttons</a></li>
+          <li><a href="#forms">Forms</a></li>
+          <li><a href="#check">Checkboxes</a></li>
+          <li><a href="#nav">Navigation</a></li>
+          <li><a href="#headings">Headings</a></li>
+          <li><a href="#cards">Cards</a></li>
+        </ul>
+      </section>
+      <section class="styleguidecontent">
+        
+        <section id="intro">
+          <h2>Styleguide</h2>
+          <p>Op deze pagina is te zien hoe verschillende onderdelen van het project voor de hallen eruit zien.
+             Op deze pagina wordt de huisstijl weergegeven.</p>
+        </section>
+    
+        <section id="colors">
+          <h2>Colors</h2>
+          <div class="color-box" style="--color: #fff;">
+            <p>#fff</p>
+          </div>
+          <div class="color-box" style="--color: #f6f6f2;">
+            <p>#f6f6f2</p>
+          </div>
+          <div class="color-box" style="--color: #c2edce;">
+            <p>#c2edce</p>
+          </div>
+          <div class="color-box" style="--color: #388087;">
+            <p>#388087</p>
+          </div>
+          <div class="color-box" style="--color: #000;">
+            <p>#000</p>
+          </div>
+          <pre>
+            <code>
+              :root {
+                --white: #fff;
+                --grey: #f6f6f2;
+                --mintgreen: #c2edce;
+                --blue: #388087;
+                --black: #000;
+              }
+            </code>
+          </pre>
+        
+          <pre>
+            <code>
+              .sidebar {
+                background-color: var(--blue);
+              }
+            </code>
+          </pre>
+         </section>
+      <section id="typography">
+        <h2>Typography</h2>
+        <p>Het is de bedoeling dat er 2 fonts worden gebruikt voor de pagina dat zijn: <br>
+         <span class="helve-normal">Helvetica </span> <br>
+          <span class="helve-bold">Helvetica</span><br><br>
+          Helvetica wordt niet gebruikt voor de Main koppen zoals H2,H3,H4 etc. Wel wordt dit gebruikt voor de overige tekst.
+          Helvetica is daarmee de meest gebruikte font op de pagina.
+          Voor de koppen gebruik ik<br><br>
+          <span class="space-normal">Space Grotesk </span> <br>
+          <span class="space-bold">Space Grotesk</span>
+        </p>
+      </section>
+  
+      <section id="buttons">
+        <h2>Buttons</h2>
+        <p> Met deze button kunnen mensen meer informatie krijgen over een buurt initiatief</p>
+        <a href="#" class="button-link" target="_blank">Meer informatie</a>
+        <pre>
+          <code>
+            .button-link {
+              display: block;
+              background-color: var(--blue);
+              color: var(--white);
+              text-align: center;
+              padding: 10px;
+              text-decoration: none;
+              width: 100%;
+              transition: all 0.3s;
+            }
+            
+            .button-link:hover {
+              background-color: var(--grey);
+              color: var(--black);
+            }
+          </code>
+        </pre>
+        <p> Met deze button kunnen mensen hun eigen initiatief opsturen</p>
+        <button onclick="sendContact();">Verstuur initiatief</button>
+        <pre>
+          <code>
+            button{
+              width: 15vw;
+              background-color: var(--blue);
+              color: var(--white);
+              text-align: center;
+              padding: 10px;
+              text-decoration: none;
+              transition: all 0.3s;
+              border: none;
+              position: relative;
+              margin-top: 2vh;
+            }
+            
+            button:hover{
+              background-color: var(--grey);
+              color: var(--black);
+            }
+          </code>
+        </pre>
+      </section>
+  
+      <section id="forms">
+        <h2>Forms</h2>
+       <p>Ik maak gebruik van een form met labels en inputs zodat mensen hun initiatief kunnen aanmelden</p>
+       <form onsubmit="return false" id="contactform">
+        <label for="firstName"> Voornaam:</label>
+        <input type="text" placeholder="Voer u naam in" id="firstName" required/>
+        <label for="initiatief"> Wat is uw initiatief:</label>
+        <textarea id="initiatiefaanmeld"  placeholder="Vermeld uw initiatief. Beschrijf hierbij de tijd/datum en activiteit" rows="6"></textarea>
+        <button onclick="sendContact();">Verstuur initiatief</button>
+      </form>
+      <pre>
+        <code>
+          
+          form{
+            margin: auto;
+            width: 300px;
+            }
+          
+          form label{
+          border: none;
+          padding-bottom: 3px;
+          display: flex;
+          }
+          
+          form label:hover{
+          background: #fff;
+          pointer-events: none;
+          }
+            
+          form input {
+            border-radius: 5px;
+            padding-left: 15px;
+            width: 30vw;
+            height: 5vh;
+            }
+            
+            form textarea{
+              border-radius: 5px;
+              padding-left: 15px;
+              width: 30vw;
+              height: 25vh;
+            }
+        </code>
+      </pre>
       </section>
 
-      <section>
-        <h3>Footer</h3>
-        ...
+      <section id="check">
+        <h2>Checkboxes</h2>
+        <p> In de sidebar heb ik een filter systeem gemaakt die gebruik maakt van verschillende checkboxes om te filteren.</p>
+        <h3>prijs</h3>
+        <label><input type="checkbox" name="price" value="paid"> betaald</label>
+        <label> <input type="checkbox" name="price" value="free"> gratis</label>
+   
+       <h3>initiatiefnemers</h3>
+           <label><input type="checkbox" name="person" value="ask"> vraag</label>
+           <label> <input type="checkbox" name="person" value="offer"> aanbod</label>
+
+           <pre>
+            <code>
+              label {
+                border: 1px solid var(--grey);
+                padding: 10px;
+                margin: 0 10px 10px;
+                display: block;
+                white-space: nowrap;
+              }
+              
+              label:hover {
+                background: var(--grey);
+                cursor: pointer;
+              }
+            </code>
+          </pre>
       </section>
+
+      <section id="nav">
+        <h2>Navigation</h2>
+        <nav>
+          <ul>
+              <li><a href="https://dehallen-amsterdam.nl/toen-en-nu/" target="_blank">historie</a></li>
+              <li><a href="https://dehallen-amsterdam.nl/aanbodkaart/" target="_blank">de hallen</a></li>
+              <li><a href="#contactform">contact</a></li>
+              <li><a href="#">nl</a></li>
+            </ul>
+      </nav>
+       
+      </section>
+  
+      <section id="headings">
+        <h2>Headings</h2>
+        <div class="blue-heading">
+          <h3>Heading 1</h3>
+        </div>
+      
+        <div class="black-heading">
+          <h3>Heading 2</h3>
+        </div>
+      </section>
+  
+      <section id="cards">
+        <h2>Cards</h2>
+        <p>Hieronder is te zien hoe de initiatieven worden weergegeven</p>
+        <div class="card" data-price="free" data-person="offer" data-categ="culture">
+
+          <section class="card-content">
+    
+            <img src="https://dehallen-amsterdam.nl/wp-content/uploads/2021/04/4-mei-herdenking-Adam-Oud-West.jpg"  alt="de hallen 4 mei herdenking" target="_blank">
+            
+            <h4>locatie: de hallen</h4>
+            <h4>datum: 04 mei</h4>
+              
+              <h2>4 Comité oud-west</h2>
+    
+              <h3>Organiseert elk jaar 4-mei herdenking
+                in Amsterdam oud-west in de passage van De Hallen</h3>
+    
+          </section>
+          <a href="https://dehallen-amsterdam.nl/4-mei/" class="button-link" target="_blank">Meer informatie</a>
+        </div>
+        <pre>
+          <code>
+            .card  {
+              width: 30%;
+              margin: 10px;
+              -webkit-box-shadow:  rgba(0, 0, 0, 0.1) 0px 4px 12px;; 
+              box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+              border-radius: 3px; /* Rounded corners */
+              color: #388087;
+              margin-bottom: 10vh;
+            }
+            .card-content {
+              align-items: center;
+              border: #388087;
+              background-color: #fff;
+              height: 50vh;
+            }
+            .card-content h2, h3 {
+              padding: 10px;
+            }
+        
+            img {
+              width: 100%;
+              height: 40%;
+              object-fit: cover;
+              padding-top: 1vh;
+              padding-bottom: 1vh;
+            }
+            
+            .card h2{
+              font-size: 1.5em;
+              color: #388087;
+              font-weight: bold;
+              padding-bottom: 10px;
+            }
+            
+            .card h3, h4{
+              font-weight: regular;
+            }
+            
+          </code>
+        </pre>
+      </section>
+
+
     </main>
   </body>
 </html>
